@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --color-navy: #0B2545;
+  --color-navy: #071a2f;
+  --color-navy-deep: #0a2441;
+  --color-navy-glow: #133a62;
   --color-gold: #C79A3A;
   --background: #ffffff;
   --foreground: #171717;
@@ -18,7 +20,7 @@ body {
 }
 
 .brand-header {
-  background: linear-gradient(90deg, var(--color-navy), #0f3a63);
+  background: linear-gradient(90deg, var(--color-navy) 0%, var(--color-navy-deep) 45%, var(--color-navy-glow) 100%);
   color: white;
 }
 
@@ -52,7 +54,7 @@ body {
 }
 
 .bg-navy {
-  background-color: var(--color-navy);
+  background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-deep) 55%, var(--color-navy-glow) 100%);
 }
 
 .bg-gold {
