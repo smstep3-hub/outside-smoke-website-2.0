@@ -1,5 +1,5 @@
 ﻿import { redirect } from 'next/navigation';
 
-export default function ProposalLanding() {
+export default function QuestionnairePage() {
   redirect('/contact');
 }
