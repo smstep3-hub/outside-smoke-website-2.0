@@ -3,9 +3,8 @@
 const nextConfig = {
   reactStrictMode: true,
   distDir: process.env.NEXT_DIST_DIR || '.next',
-  turbopack: {
-    root: __dirname
-  }
+  outputFileTracingRoot: __dirname
 };
 
 module.exports = nextConfig;
+
