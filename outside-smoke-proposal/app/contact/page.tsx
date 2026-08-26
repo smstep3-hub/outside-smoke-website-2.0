@@ -98,21 +98,28 @@ function ContactPageContent() {
     setFeedback({ type: null, message: '' });
 
     try {
-      const response = await fetch('/api/consultation-request', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.helpText,
+          swimTeamName: formData.swimTeamName,
+          state: formData.state,
+          timeZone: formData.timeZone,
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Unable to submit your request right now.');
+        throw new Error(data.error || 'Unable to send your request right now. Please try again.');
       }
 
       setFeedback({
         type: 'success',
-        message: 'Thanks! Your consultation request has been sent. We will reach out shortly.',
+        message: "Thanks! Your consultation request has been sent. We’ll be in touch shortly.",
       });
       setFormData({
         name: '',
@@ -125,7 +132,10 @@ function ContactPageContent() {
     } catch (error) {
       setFeedback({
         type: 'error',
-        message: error instanceof Error ? error.message : 'Unable to submit your request right now.',
+        message:
+          error instanceof Error
+            ? error.message
+            : 'Unable to send your request right now. Please try again.',
       });
     } finally {
       setIsSubmitting(false);
