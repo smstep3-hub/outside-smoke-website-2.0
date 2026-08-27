@@ -59,6 +59,22 @@ const usStates = [
 
 const usTimeZones = ['Eastern', 'Central', 'Mountain', 'Pacific'];
 
+const serviceOptions = [
+  'Sponsorship & Partnership Development',
+  'Fundraising Blueprint & Campaign Planning',
+  'Digital Media & Livestream Development',
+  'Club Growth & Organizational Audit',
+  'Coach & Staff Development',
+  'Workshops & Team Development',
+  'Operational & Strategic Consulting',
+  "Not Sure / Let's Talk",
+];
+
+const serviceSlugs = serviceOptions.reduce<Record<string, string>>((options, service) => {
+  options[service.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')] = service;
+  return options;
+}, {});
+
 function ContactPageContent() {
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
@@ -67,6 +83,7 @@ function ContactPageContent() {
     swimTeamName: '',
     state: '',
     timeZone: '',
+    service: '',
     helpText: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -77,11 +94,16 @@ function ContactPageContent() {
 
   useEffect(() => {
     const helpPrompt = searchParams.get('help');
+    const serviceSlug = searchParams.get('service');
+    const selectedService = serviceSlug ? serviceSlugs[serviceSlug] : '';
     if (helpPrompt) {
       setFormData((current) => ({
         ...current,
         helpText: helpPrompt,
       }));
+    }
+    if (selectedService) {
+      setFormData((current) => ({ ...current, service: selectedService }));
     }
   }, [searchParams]);
 
@@ -104,7 +126,7 @@ function ContactPageContent() {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          message: formData.helpText,
+          message: `Service Interest: ${formData.service}\n\n${formData.helpText}`,
           swimTeamName: formData.swimTeamName,
           state: formData.state,
           timeZone: formData.timeZone,
@@ -127,6 +149,7 @@ function ContactPageContent() {
         swimTeamName: '',
         state: '',
         timeZone: '',
+        service: '',
         helpText: '',
       });
     } catch (error) {
@@ -216,6 +239,25 @@ function ContactPageContent() {
                     placeholder="Your name"
                     required
                   />
+                </div>
+
+                <div>
+                  <label htmlFor="service" className="block text-sm font-semibold text-navy mb-2">
+                    What can we help with?
+                  </label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent outline-none"
+                    required
+                  >
+                    <option value="">Select a service</option>
+                    {serviceOptions.map((service) => (
+                      <option key={service} value={service}>{service}</option>
+                    ))}
+                  </select>
                 </div>
 
                 <div>
