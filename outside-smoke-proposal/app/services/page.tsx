@@ -1,135 +1,98 @@
 import ServiceCard from '@/components/ServiceCard';
 import CTAButton from '@/components/CTAButton';
 
-export default function Services() {
-  const services = [
-    {
-      title: 'Sponsorship Kickstart',
-      description: 'Launch your sponsorship program with a strategic plan. We identify potential sponsors, develop sponsorship packages, and create outreach templates.',
-      bestFor: 'Clubs just starting sponsorship efforts or looking to formalize existing relationships',
-      inquiryPrompt: 'I would like help building a sponsorship strategy for our team and learning how to approach potential sponsors.'
-    },
-    {
-      title: 'Fundraising Launch Plan',
-      description: 'Design a multi-channel fundraising strategy. From event planning to online campaigns, we help you maximize revenue while minimizing team burden.',
-      bestFor: 'Teams seeking sustainable, repeatable fundraising that doesn\'t rely on coach time',
-      inquiryPrompt: 'I would like help creating a fundraising plan that brings in reliable revenue without taking too much coach time.'
-    },
-    {
-      title: 'Social Media Templates',
-      description: 'Get professionally designed, editable social media content (graphics, captions, posting calendars) ready to post across your channels.',
-      bestFor: 'Teams wanting consistent, professional social presence without hiring a full-time manager',
-      inquiryPrompt: 'I would like help developing a social media content system and templates for our program.'
-    },
-    {
-      title: 'Club Growth Audit',
-      description: 'We analyze your current sponsorships, fundraising, communications, and member experience. Receive a detailed report with actionable recommendations.',
-      bestFor: 'Established clubs wanting to identify growth opportunities and optimize operations',
-      inquiryPrompt: 'I would like a growth audit to identify opportunities to improve sponsorships, fundraising, communications, and member experience.'
-    },
-    {
-      title: 'Monthly Retainer Package',
-      description: 'Ongoing support: strategy, content creation, sponsor relationship management, and performance tracking. We become an extension of your team.',
-      bestFor: 'Clubs ready for sustained growth and wanting consistent guidance and updates',
-      inquiryPrompt: 'I would like ongoing support from Outside Smoke to help with strategy, content, sponsor relationships, and growth planning.'
-    }
-  ];
+const services = [
+  {
+    title: 'Sponsorship & Partnership Development',
+    headline: 'Build partnerships that create value for your organization and your sponsors.',
+    description: 'Outside Smoke Consulting helps aquatic organizations identify their most valuable assets, package those opportunities effectively, establish sponsorship levels, identify potential partners, and create a sustainable system for generating partnership revenue.',
+    helpWith: ['Sponsorship asset inventories', 'Sponsorship packets and presentations', 'Sponsorship tiers and pricing', 'Local and national partner strategy', 'Prospect identification and research', 'Outreach strategy and messaging', 'Scoreboard, facility, event and digital sponsorship opportunities', 'Sponsor activation', 'Renewal strategy', 'Partnership tracking and organization'],
+    cta: 'Build Your Sponsorship Strategy',
+    slug: 'sponsorship-partnership-development',
+  },
+  {
+    title: 'Fundraising Blueprint & Campaign Planning',
+    headline: 'We build the fundraiser. Your organization runs it.',
+    description: 'Outside Smoke Consulting works with your leadership team to understand the campaign, revenue goal, audience and timeline, then builds the tools your organization needs to execute it successfully. From Swim-A-Thons to custom fundraising campaigns, we can eliminate much of the planning workload before the fundraiser ever launches.',
+    helpWith: ['Fundraising strategy and revenue goals', 'Complete campaign timelines', 'Email and communication calendars', 'Parent and athlete communications', 'Social media content planning', 'Marketing materials', 'Staff and volunteer responsibilities', 'Campaign launch plans', 'Progress tracking', 'Post-campaign wrap-up'],
+    cta: 'Plan Your Next Fundraiser',
+    slug: 'fundraising-blueprint-campaign-planning',
+  },
+  {
+    title: 'Digital Media & Livestream Development',
+    headline: 'Make your meet presentation match the quality of your program.',
+    description: 'Outside Smoke Consulting helps aquatic organizations improve livestreams and digital presentation while creating additional opportunities to showcase sponsors and organizational branding.',
+    helpWith: ['YouTube and Facebook streaming', 'OBS setup and optimization', 'Branded broadcast graphics', 'Sponsor overlays', 'Automated sponsor rotations', 'Meet thumbnails', 'Digital advertising integration', 'Broadcast workflows', 'Staff training and documentation', 'Ongoing graphic and system updates'],
+    cta: 'Upgrade Your Digital Experience',
+    slug: 'digital-media-livestream-development',
+  },
+  {
+    title: 'Club Growth & Organizational Audit',
+    headline: 'Understand where your program stands—and where it can go next.',
+    description: 'Outside Smoke Consulting provides an outside perspective on the health and direction of your organization, identifying opportunities for growth while helping leadership prioritize what matters most.',
+    helpWith: ['Membership analysis', 'Recruitment strategy', 'Retention analysis', 'Program positioning', 'Operational review', 'Communication review', 'Revenue opportunity assessment', 'Digital presence review', 'Organizational strengths and weaknesses', 'Prioritized growth recommendations'],
+    cta: 'Evaluate Your Program',
+    slug: 'club-growth-organizational-audit',
+  },
+  {
+    title: 'Coach & Staff Development',
+    headline: 'Invest in the people responsible for delivering your program every day.',
+    description: "Today's coaches are responsible for far more than writing workouts. Outside Smoke Consulting helps organizations develop stronger coaches, leaders and staff systems designed for the realities of today's aquatic environment.",
+    helpWith: ['Coaching staff assessments', 'Coach development pathways', 'Leadership development', 'Staff expectations and accountability', 'Coach development resources', 'Communication skills', 'Conflict management', 'Workload and time management', 'Daily coaching processes', 'Multi-site leadership', 'Organizational culture development'],
+    cta: 'Develop Your Staff',
+    slug: 'coach-staff-development',
+  },
+  {
+    title: 'Workshops & Team Development',
+    headline: 'Professional development built around the challenges your staff actually faces.',
+    description: 'Outside Smoke Consulting delivers customized workshops and team-development sessions for coaching staffs, leadership teams, retreats and organizational meetings. Rather than relying on generic presentations, sessions can be designed around the current needs and challenges of your organization.',
+    helpWith: ['The Modern Coach', 'Communication, Conflict & Culture', 'Managing the Coaching Workload', 'Leadership Within a Multi-Site Organization', 'Building Staff Accountability', 'Creating Consistency Across a Coaching Staff', 'Daily Planning & Coaching Processes', 'Parent and Athlete Communication', 'Building Culture Beyond the Mission Statement'],
+    cta: 'Build a Development Session',
+    slug: 'workshops-team-development',
+  },
+  {
+    title: 'Operational & Strategic Consulting',
+    headline: "Sometimes the challenge doesn't fit neatly into a package.",
+    description: 'Outside Smoke Consulting works alongside aquatic organizations facing operational challenges, organizational growth, leadership transitions, new initiatives, or projects requiring an experienced outside perspective. We start by understanding the problem, then determine what support actually makes sense.',
+    helpWith: ['Strategic planning', 'Process development', 'Leadership implementation', 'Organizational structure', 'Communication systems', 'Parent and community engagement', 'Staff and volunteer processes', 'Project planning', 'New program implementation', 'Revenue strategy', 'Leadership advisory support'],
+    cta: "Tell Us What You're Working On",
+    slug: 'operational-strategic-consulting',
+  },
+];
 
+export default function Services() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-navy text-white py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Services Built for Swim Teams
-          </h1>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Whether you're just starting out or scaling up, we have a service package designed for your stage of growth.
-          </p>
+      <section className="bg-navy py-16 text-white md:py-24">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">Services Built for Aquatic Organizations</h1>
+          <p className="mx-auto max-w-3xl text-xl text-white/90">Practical support for the work that helps your organization grow outside the pool.</p>
         </div>
       </section>
 
-      {/* Services Grid */}
       <section className="py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* EDIT: Customize services by updating the services array above */}
-            {services.map((service, idx) => (
-              <ServiceCard
-                key={idx}
-                title={service.title}
-                description={service.description}
-                bestFor={service.bestFor}
-                inquiryPrompt={service.inquiryPrompt}
-              />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <ServiceCard key={service.slug} {...service} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
       <section className="bg-gray-100 py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-12">
-            How We Work With You
-          </h2>
-          
-          <div className="space-y-8">
-            <div className="flex gap-6">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-gold text-navy font-bold">
-                  1
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-navy mb-2">Understand Your Needs</h3>
-                <p className="text-gray-700">
-                  You tell us about your team's challenges, goals, and current stage so we can recommend the right service package.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-6">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-gold text-navy font-bold">
-                  2
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-navy mb-2">Develop a Plan</h3>
-                <p className="text-gray-700">
-                  We create a customized proposal detailing the services that best fit your situation and timeline.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-6">
-              <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-gold text-navy font-bold">
-                  3
-                </div>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-navy mb-2">Execute & Support</h3>
-                <p className="text-gray-700">
-                  We deliver the services, keep you updated, and iterate based on your feedback and results.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">Don&apos;t See Exactly What You Need?</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-700">That&apos;s okay. Outside Smoke Consulting isn&apos;t built around forcing every organization into the same package. Tell us what you&apos;re trying to accomplish, where you&apos;re getting stuck, or what you simply don&apos;t have the bandwidth to build internally. We&apos;ll start with a conversation, identify the opportunity, and determine what an appropriate scope of work could look like.</p>
+          <CTAButton text="Submit a Consultation Request" href="/contact" variant="primary" />
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-navy text-white py-16 md:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Find Your Perfect Service Mix?
-          </h2>
-          <p className="text-lg text-white/90 mb-8">
-            Tell us what you are working on and we will help recommend the best next step for your team.
-          </p>
-          <CTAButton text="Contact Us" href="/contact" variant="primary" />
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">Built Around Your Organization</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-700">Every organization has different goals, resources, timelines and challenges. Outside Smoke Consulting engagements are scoped around the work required to accomplish your objectives. Following an initial consultation, we&apos;ll recommend a scope of work, deliverables, timeline and investment based on what your organization actually needs.</p>
+          <CTAButton text="Start the Conversation" href="/contact" variant="primary" />
         </div>
       </section>
     </div>
